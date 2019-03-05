@@ -12,6 +12,9 @@ app.get('/', (req,res) => {
     res.json('hello Jonathan');
 })
 
+app.get('/hello', (req,res) => {
+    res.json('hello Benji');
+})
 
 app.listen(PORT, function () {
     console.log(`listening on port ${PORT}`);

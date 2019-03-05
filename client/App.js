@@ -5,7 +5,15 @@ class App extends Component {
         super(props);
     }
 
-
+    // componentDidMount() {
+    //     fetch('http://localhost:3000')
+    //     .then((data) => {
+    //         return data.json();
+    //     })
+    //     .then((data) => {
+    //         console.log(data);
+    //     })
+    // }
     render() {
 
         return (
