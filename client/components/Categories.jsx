@@ -1,12 +1,12 @@
 /**
  * ************************************
  *
- * @module  actionTypes.js
+ * @module  Categories.jsx
  * @author
  * @date
- * @description Action Type Constants
+ * @description container for login and invite functionality
  *
  * ************************************
  */
 
-export const IS_LOGGED_IN = 'IS_LOGGED_IN';
+ 
