@@ -33,13 +33,9 @@ authRouter.get(
   }
 );
 
-<<<<<<< HEAD
-app.use('/auth', authRouter);
-=======
-app.get('/hello', (req,res) => {
-    res.json('hello Benji');
-})
->>>>>>> 999cca7aa853decd8c800256dbb12f988bede50b
+app.get('/hello', (req, res) => {
+  res.json('hello Benji');
+});
 
 app.listen(PORT, () => {
   console.log(`listening on port ${PORT}`);
