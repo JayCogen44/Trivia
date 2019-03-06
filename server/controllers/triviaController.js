@@ -35,12 +35,11 @@ triviaController.getQuestions = (req, res, next) => {
 
 triviaController.newGame = (req, res, next) => {
     const query = {
-        text: `INSERT INTO activeGames(user_id, category_id, score, room_name)
+        text: `INSERT INTO activeGames(user_id, category_id, room_name)
                VALUES($1,$2,$3,$4) RETURNING *`,
         values: [
             req.body.user_id,
             req.body.category_id,
-            0,
             req.body.room_name
         ]
     }
