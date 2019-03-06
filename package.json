@@ -1,5 +1,5 @@
 {
-  "name": "boilerplate",
+  "name": "trivia",
   "version": "1.0.0",
   "main": "index.js",
   "scripts": {
@@ -7,7 +7,7 @@
     "build-webpack": "webpack",
     "webpack-dev": "webpack-dev-server"
   },
-  "author": "Jay Cogen",
+  "author": "Harmon Huynh, Ben Woodson, Jay Cogen, Jonathan Mavandi",
   "license": "ISC",
   "dependencies": {
     "css-loader": "^0.28.11",
