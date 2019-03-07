@@ -19,7 +19,7 @@ app.use(bodyParser.urlencoded({ extended: true }));
 
 // USER ROUTES
 
-const authRouter = express.Router();
+const authRouter = express.Router('/auth');
 
 authRouter.get('/facebook', passport.authenticate('facebook'), (req, res) => {
   console.log('Logging in with Facebook');
