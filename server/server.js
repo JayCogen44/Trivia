@@ -44,9 +44,6 @@ app.get('/hello', (req, res) => {
   res.json('hello Benji');
 });
 
-app.listen(PORT, () => {
-  console.log(`listening on port ${PORT}`);
-}); // listens on port 3000 -> http://localhost:3000/
 // USER ROUTES
 
 // TRIVIA ROUTES
