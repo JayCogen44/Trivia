@@ -1,5 +1,6 @@
 const webpack = require('webpack');
 const path = require('path');
+const htmlWebpackPlugin = require('html-webpack-plugin');
 
 module.exports = {
   entry: './client/index.js',
@@ -36,5 +37,6 @@ module.exports = {
         use: [{ loader: 'style-loader' }, { loader: 'css-loader' }, { loader: 'sass-loader' }]
       }
     ]
-  }
+  },
+  plugins: [new htmlWebpackPlugin({ template: './index.html' })]
 };

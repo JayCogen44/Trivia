@@ -2,6 +2,7 @@
 const express = require('express');
 const bodyParser = require('body-parser');
 const passport = require('passport');
+const path = require('path');
 
 const app = express();
 const PORT = 3000;
@@ -60,6 +61,8 @@ app.post('/join-room', triviaController.joinRoom, (req, res) => {
 app.post('/results', triviaController.results, (req, res) => {
   res.json(res.locals.results);
 });
+
+app.use(express.static(path.resolve(__dirname, '../build')));
 
 app.listen(PORT, () => {
   console.log(`listening on port ${PORT}`);
