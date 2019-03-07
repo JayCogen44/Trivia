@@ -10,6 +10,10 @@ const PORT = 3000;
 // NPM MODULES
 require('dotenv').config();
 
+// Passport
+app.use(passport.initialize());
+app.use(passport.session());
+
 // CONTROLLERS
 const triviaController = require('./controllers/triviaController');
 require('./controllers/authController');
@@ -20,9 +24,9 @@ app.use(bodyParser.urlencoded({ extended: true }));
 
 // USER ROUTES
 
-const authRouter = express.Router('/auth');
+const authRouter = express.Router();
 
-authRouter.get('/facebook', passport.authenticate('facebook'), (req, res) => {
+authRouter.get('/facebook', passport.authenticate('facebook', { scope: 'email' }), (req, res) => {
   console.log('Logging in with Facebook');
 });
 
@@ -34,7 +38,8 @@ authRouter.get(
   }),
   (req, res) => {
     req.session.user = req.user;
-    res.redirect();
+    console.log('THIS IS WRECK DAT USER', req.user);
+    res.send(req.user);
   }
 );
 
@@ -61,6 +66,8 @@ app.post('/join-room', triviaController.joinRoom, (req, res) => {
 app.post('/results', triviaController.results, (req, res) => {
   res.json(res.locals.results);
 });
+
+app.use('/auth', authRouter);
 
 app.use(express.static(path.resolve(__dirname, '../build')));
 

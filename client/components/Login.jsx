@@ -22,7 +22,7 @@ const Login = props => {
       OR
       <button onClick={props.logIn}>Log in</button>
       <div>
-        <a className="btn btn-block btn-social btn-facebook">
+        <a href="/auth/facebook" className="btn btn-block btn-social btn-facebook">
           <span className="fab fa-facebook" />
           Sign in with Facebook
         </a>
