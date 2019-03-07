@@ -11,8 +11,7 @@ module.exports = {
   },
   devServer: {
     open: true,
-    contentBase: './',
-    publicPath: '/build/',
+    contentBase: __dirname,
     proxy: {
       '/api': {
         target: 'http://localhost:3000',
