@@ -10,7 +10,7 @@
  */
 
 import React, { Component } from 'react';
-import '../scss/bootstrap-social.scss';
+// import '../scss/bootstrap-social.scss';
 
 const Login = props => {
   console.log('this.props', props);
