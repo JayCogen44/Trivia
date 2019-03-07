@@ -1,4 +1,6 @@
 # ADD MORE HERE
+oauth/
+.DS_Store
 
 # Logs
 logs
