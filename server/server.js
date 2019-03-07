@@ -3,8 +3,6 @@ const express = require('express');
 const bodyParser = require('body-parser');
 const passport = require('passport');
 
-require('./controllers/authController');
-
 const app = express();
 const PORT = 3000;
 
@@ -13,14 +11,13 @@ require('dotenv').config();
 
 // CONTROLLERS
 const triviaController = require('./controllers/triviaController');
+require('./controllers/authController');
 
 // GLOBAL ROUTES
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: true }));
 
-app.get('/', (req, res) => {
-  res.json('hello Jonathan');
-});
+// USER ROUTES
 
 const authRouter = express.Router();
 
@@ -40,12 +37,6 @@ authRouter.get(
   }
 );
 
-app.get('/hello', (req, res) => {
-  res.json('hello Benji');
-});
-
-// USER ROUTES
-
 // TRIVIA ROUTES
 app.get('/categories', triviaController.getCategories, (req, res) => {
   res.json(res.locals.categories);
@@ -60,11 +51,15 @@ app.post('/new-game', triviaController.newGame, (req, res) => {
 });
 
 // post join-room - add a row in activegames table with current user id
-
-// post submit answer - add row in answers table
+app.post('/join-room', triviaController.joinRoom, (req, res) => {
+  res.json(res.locals.joinedRoom);
+});
 
 // get results - query activegames table for current room id -> all users in room, their score,
 // and the answers table that coorespond the questions in that category in that room
+app.post('/results', triviaController.results, (req, res) => {
+  res.json(res.locals.results);
+});
 
 app.listen(PORT, () => {
   console.log(`listening on port ${PORT}`);
