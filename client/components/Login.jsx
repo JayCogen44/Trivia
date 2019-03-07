@@ -10,16 +10,14 @@
  */
 
 import React, { Component } from 'react';
+import '../scss/bootstrap-social.scss';
 
-const Login = (props) => {
-  
-    
-    console.log('this.props', props);
-    return(
-      <button onClick={props.logIn}>
-        Log in
-      </button>
-    )
-
-}
+const Login = props => {
+  console.log('this.props', props);
+  return (
+    <form action="/auth/facebook" method="GET">
+      <button className="btn-facebook" onClick={props.Login} />
+    </form>
+  );
+};
 export default Login;
