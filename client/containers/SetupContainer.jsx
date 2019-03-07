@@ -12,17 +12,30 @@
 import React, { Component } from 'react';
 import ReactDOM from "react-dom";
 import Login from '../components/Login';
+import Categories from '../components/Categories';
+import ShareLink from '../components/ShareLink';
+
 import * as actions from "../actions/actions";
 import { connect } from 'react-redux';
 
 const mapStateToProps = (store) => ({
   isLoggedIn: store.reducer.isLoggedIn,
-}
-)
+  categories: store.reducer.categories,
+  currentPage: store.reducer.currentPage,
+  categorySelected: store.reducer.categorySelected,
+})
 
 const mapDispatchToProps = dispatch => ({
-  logIn: (login) => {
-    dispatch(actions.logIn(login));
+  // after logged in, should render to choose category or start game if joined from link 
+  logIn: () => {
+    dispatch(actions.logIn());
+  },
+  fetchCategories: () => {
+    dispatch(actions.fetchCategories())
+  },
+  // after submitting category, will render to shareLink component
+  submitCategoryForm: (e) => {
+    dispatch(actions.submitCategoryForm(event.target.id));
   }
 })
 
@@ -31,15 +44,18 @@ class SetupContainer extends Component{
     super(props);
   }
   render(){
-    console.log(this.props);
-    const {logIn, isLoggedIn} = this.props;
+    const {logIn, isLoggedIn, categories, fetchCategories, submitCategoryForm, currentPage, categorySelected} = this.props;
     return(
       <div>
-        {isLoggedIn ? 
-        <div>something</div> :   
+        {currentPage == 'loginPage' && 
         <Login logIn={logIn} isLoggedIn={isLoggedIn}/>
-
-      }
+        }
+        {currentPage == 'categoriesPage' && 
+        <Categories fetchCategories={fetchCategories} categories={categories} submitCategoryForm={submitCategoryForm}/> 
+        }
+        {currentPage == 'shareLinkPage' && 
+        <ShareLink categorySelected={categorySelected}  />
+        }
       </div>
     )
   }
